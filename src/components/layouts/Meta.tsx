@@ -12,6 +12,7 @@ type IMetaProps = {
 
 const Meta = (props: IMetaProps) => {
   const router = useRouter();
+  const canonical = `${process.env.NEXT_PUBLIC_DOMAIN}${props.canonical || ''}`;
 
   return (
     <>
@@ -50,11 +51,11 @@ const Meta = (props: IMetaProps) => {
       <NextSeo
         title={props.title}
         description={props.description}
-        canonical={props.canonical}
+        canonical={canonical}
         openGraph={{
           title: props.title,
           description: props.description,
-          url: props.canonical,
+          url: canonical,
           locale: AppConfig.locale,
           site_name: AppConfig.site_name,
         }}
